@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMAPAR V.1 - A Smart Parking System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Tambahkan CSS disini jika diperlukan */
+    </style>
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('/spots');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                document.getElementById('available').textContent = data.availableSpots;
+                document.getElementById('total').textContent = data.totalSpots;
+                const spotsDiv = document.getElementById('spots');
+                spotsDiv.innerHTML = '';
+                Object.keys(data.spots).forEach(spot => {
+                    const div = document.createElement('div');
+                    div.className = 'spot ' + (data.spots[spot] ? 'available' : 'occupied');
+                    div.textContent = spot;
+                    spotsDiv.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+        setInterval(fetchData, 1000);
+    </script>
+</head>
+<body onload="fetchData()">
+    <nav class="navbar navbar-expand-lg shadow-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/logopnj.png" alt="Smapar" class="logo-img">
+                <img src="assets/logocsc.png" alt="Smapar" class="logo-img">
+                <img src="assets/smapar.png" alt="Smapar" class="logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="navbar-toggler-icon"></div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="about_us.html">About us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1><img src="assets/smapar.png" alt="smapar" class="smapar-logo"></h1>
+    <h2>Parking Space Available
+        <span class="box">
+            <span id="available">6</span>
+            <span id="slash">/</span>
+            <span id="total">8</span>
+        </span>
+    </h2>
+    <div class="container">
+        <div id="spots-container">
+            <div id="spots">
+                <div class="spot available">1</div>
+                <div class="spot occupied">2</div>
+                <div class="spot available">3</div>
+                <div class="spot occupied">4</div>
+                <div class="spot available">5</div>
+                <div class="spot available">6</div>
+                <div class="spot available">7</div>
+                <div class="spot available">8</div>
+                <!-- Tambahkan lebih banyak kotak sesuai kebutuhan -->
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
