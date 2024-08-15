@@ -1,0 +1,150 @@
+@font-face{
+    font-family:'Helvetica';
+    src: url('fonts/Helvetica/Helvetica.ttf');
+}
+@font-face{
+    font-family:'Helvetica-Bold';
+    src: url('fonts/Helvetica/Helvetica-Bold.ttf');
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e !important;
+    text-align: center;
+}
+h1, h2 {
+    text-align: center;
+    justify-content: center;
+    font-family: 'Helvetica';
+    font-size: 15px !important;
+    color: white !important;
+}
+h2 {
+    text-align: center;
+    justify-content: left;
+    font-family: 'Helvetica';
+    font-size: 15px !important;
+    color: white !important;
+}
+#available {
+    color: #1e1e1e;
+}
+#total {
+    color: #1e1e1e;
+}
+#slash {
+    color: #1e1e1e;
+}
+.logo-img {
+    height: 55px;
+}
+.smapar-logo {
+    justify-content: center;
+    height: 300px; /* Pertahankan rasio aspek gambar */
+}
+.icons{
+    height: 50px;
+}
+
+.shadow-navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Transparansi 50% */
+}
+.navbar-nav .nav-link {
+    font-family: 'Helvetica';
+    color: #FFFFFF; 
+}
+.navbar-nav .nav-link:hover {
+    font-family: 'Helvetica';
+    color: #03dac5; 
+}
+.navbar-nav .nav-link.active {
+    font-family: 'Helvetica';
+    color: #33FF57;
+}
+.collapse.navbar-collapse {
+    align-items: center;
+}
+.spot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom:10px;
+}
+.available {
+    background-color: green;
+    height: 100px;
+}
+.occupied {
+    background-color: red;
+    height: 100px;
+}
+.container {
+    text-align: center;
+    margin: 0 auto;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#spots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    width: 500px;
+}
+.box {
+    display: inline-flex; /* Menggunakan flexbox untuk menata elemen anak */
+    align-items: center; /* Pusatkan elemen anak secara vertikal */
+    padding: 5px 10px; /* Ruang di dalam kotak */
+    background-color: #f0f0f0; /* Warna latar belakang kotak */
+    border-radius: 20px; /* Membulatkan sudut kotak */
+    border: 1px solid #ccc; /* Warna dan gaya border kotak */
+    font-size: 16px; /* Ukuran font untuk kotak */
+    flex-shrink: 0;
+}
+
+.box span {
+    margin: 0 5px; 
+}
+@media screen and (max-width: 600px)
+{
+    .logo-img{
+        height: 30px;
+    }
+    .smapar-logo{
+        height: 150px;
+    }
+    .icons{
+        height: 30px;
+        background: none; /* Pastikan tidak ada latar belakang */
+        box-shadow: none; /* Pastikan tidak ada bayangan */
+        border: none; /* Pastikan tidak ada garis tepi */
+    }
+}
+
+@media screen and (max-width: 768px)
+{
+    .logo-img{
+        height: 30px;
+    }
+    .smapar-logo{
+        height: 150px;
+    }
+    .icons{
+        height: 30px;
+        background: none; /* Pastikan tidak ada latar belakang */
+        box-shadow: none; /* Pastikan tidak ada bayangan */
+        border: none; /* Pastikan tidak ada garis tepi */
+    }
+}
