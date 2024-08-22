@@ -4,27 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMAPAR V.1 - A Smart Parking System</title>
+    <!-- Stylesheet Links -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-grid.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-grid.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-grid.rtl.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-grid.rtl.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-reboot.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-reboot.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-reboot.rtl.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-reboot.rtl.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-utilities.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-utilities.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-utilities.rtl.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap-utilities.rtl.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap.rtl.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Bootstrap-Ass/css/bootstrap.rtl.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
 
+    <!-- Script to Fetch Data -->
     <script>
         async function fetchData() {
             try {
@@ -41,7 +28,6 @@
 
                 // Urutkan spot parkir berdasarkan nomor spotnya
                 const sortedSpots = Object.keys(data.spots).sort((a, b) => {
-                    // Extract numeric part of the spot name and compare
                     const numA = parseInt(a.split(' ')[1], 10);
                     const numB = parseInt(b.split(' ')[1], 10);
                     return numA - numB;
@@ -61,12 +47,12 @@
         // Memanggil fetchData setiap 1 detik
         setInterval(fetchData, 1000);
     </script>
-
 </head>
 <body onload="fetchData()">
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg shadow-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#home">
                 <img src="{{ url_for('static', filename='logopnj.png') }}" alt="PNJ" class="logo-img">
                 <img src="{{ url_for('static', filename='logocsc.png') }}" alt="CSC" class="logo-img">
                 <img src="{{ url_for('static', filename='smapar.png') }}" alt="SMAPAR" class="logo-img">
@@ -76,27 +62,35 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link" aria-current="page" href="#home">Home</a>
-                    <a class="nav-link" href="{{ url_for('static', filename='about_us.html') }}">About us</a>                </div>
+                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="#aboutus">About Us</a>
+                </div>
             </div>
         </div>
-      </nav>
-    <h1><img src="{{ url_for('static', filename='smapar.png') }}" alt="smapar" class="smapar-logo"></h1>
-    <h2>Parkir Yang Tersedia: 
-        <span class="box">
-            <span id="available">0</span>
-            <span id="slash">/</span>
-            <span id="total">0</span>
-        </span>
-    </h2>
-    <div class="container">
-        <div id="spots-container">
-            <div id="spots"></div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1><img src="{{ url_for('static', filename='smapar.png') }}" alt="smapar" class="smapar-logo"></h1>
+        <h2>Parkir Yang Tersedia: 
+            <span class="box">
+                <span id="available">0</span>
+                <span id="slash">/</span>
+                <span id="total">0</span>
+            </span>
+        </h2>
+        <div class="container">
+            <div id="spots-container">
+                <div id="spots"></div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- About Us Section -->
     <section id="aboutus">
         <h3><img src="{{ url_for('static', filename='aboutus.png') }}" alt="smapar" class="smapar-logo"></h3> 
         <div class="About-Us">
+            <!-- Content for About Us -->
             <div class="card">
                 <center><img src="{{ url_for('static', filename='agung.jpg') }}" alt="Profile Picture"></center>
                 <h2>Person One</h2>
@@ -118,7 +112,7 @@
             </div>
             <div class="card">
                 <center><img src="{{ url_for('static', filename='agung.jpg') }}" alt="Profile Picture"></center>
-                <h2>Person Two</h2>
+                <h2>Person One</h2>
                 <p>Another description for the second person. Their work and interests go here.</p>
                 <div class="social-icons">
                     <a href="https://www.instagram.com" target="_blank" class="social-icon">
@@ -137,8 +131,8 @@
             </div>
             <div class="card">
                 <center><img src="{{ url_for('static', filename='agung.jpg') }}" alt="Profile Picture"></center>
-                <h2>Person Three</h2>
-                <p>A brief description for the third person, showcasing their skills and hobbies.</p>
+                <h2>Person One</h2>
+                <p>Another description for the second person. Their work and interests go here.</p>
                 <div class="social-icons">
                     <a href="https://www.instagram.com" target="_blank" class="social-icon">
                         <img src="{{ url_for('static', filename='icons/instagram.png') }}" alt="Instagram">
@@ -154,29 +148,66 @@
                     </a>
                 </div>
             </div>
-        </div>
-        </section>
-        <footer>
-            <div class="isi">
-                <p>&copy; 2024 NoName. All rights reserved.</p>
-                <ul>
-                    <li><a href="#aboutus">About Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <div class="social-media">
-                    <a href="#" aria-label="Facebook">Facebook</a>
-                    <a href="#" aria-label="Twitter">Twitter</a>
-                    <a href="#" aria-label="Instagram">Instagram</a>
+            <div class="card">
+                <center><img src="{{ url_for('static', filename='agung.jpg') }}" alt="Profile Picture"></center>
+                <h2>Person One</h2>
+                <p>Another description for the second person. Their work and interests go here.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                        <img src="{{ url_for('static', filename='icons/instagram.png') }}" alt="Instagram">
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="social-icon">
+                        <img src="{{ url_for('static', filename='icons/twitter.png') }}" alt="Twitter">
+                    </a>
+                    <a href="mailto:email@example.com" class="social-icon">
+                        <img src="{{ url_for('static', filename='icons/gmail.png') }}" alt="Email">
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                        <img src="{{ url_for('static', filename='icons/facebook.png') }}" alt="Facebook">
+                    </a>
                 </div>
             </div>
-        </footer>
-        <script src="{{ url_for('static', filename='Bootstrap-Ass/js/bootstrap.bundle.js') }}"></script>
-        <script src="{{ url_for('static', filename='Bootstrap-Ass/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='Bootstrap-Ass/js/bootstrap.esm.js') }}"></script>
-        <script src="{{ url_for('static', filename='Bootstrap-Ass/js/bootstrap.esm.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='Bootstrap-Ass/js/bootstrap.js') }}"></script>
-        <script src="{{ url_for('static', filename='Bootstrap-Ass/js/bootstrap.min.js') }}"></script>
-    </body>
+            <div class="card">
+                <center><img src="{{ url_for('static', filename='agung.jpg') }}" alt="Profile Picture"></center>
+                <h2>Person One</h2>
+                <p>Another description for the second person. Their work and interests go here.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                        <img src="{{ url_for('static', filename='icons/instagram.png') }}" alt="Instagram">
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="social-icon">
+                        <img src="{{ url_for('static', filename='icons/twitter.png') }}" alt="Twitter">
+                    </a>
+                    <a href="mailto:email@example.com" class="social-icon">
+                        <img src="{{ url_for('static', filename='icons/gmail.png') }}" alt="Email">
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                        <img src="{{ url_for('static', filename='icons/facebook.png') }}" alt="Facebook">
+                    </a>
+                </div>
+            </div>
+            <!-- Other Cards for About Us -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="isi">
+            <p>&copy; 2024 NoName. All rights reserved.</p>
+            <ul>
+                <li><a href="#aboutus">About Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="social-media">
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='Bootstrap-Ass/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>
